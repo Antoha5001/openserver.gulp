@@ -20,7 +20,7 @@
 
 </head>
 <body>
-	
+	<p>Lorem ipsum dolor sit amet.</p>
 <script type="text/javascript" src="script/scripts.min.js"></script>
 <!-- <script>window.jQuery || document.write('<script src="script/jquery.js"><\/script>')</script> -->
 </body>

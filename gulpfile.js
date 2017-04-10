@@ -13,7 +13,7 @@ var gulp           = require('gulp'),
 		autoprefixer   = require('gulp-autoprefixer'),
 		ftp            = require('vinyl-ftp'),
 		notify         = require("gulp-notify"),
-		srv 						= 'setka.lessons:88';
+		srv 						= 'openserver.gulp:82';
 
 // Скрипты проекта
 
@@ -71,10 +71,11 @@ gulp.task('css-libs',['sass'], function(){
 	return gulp.src(['app/css/mystyle.css',])
 				.pipe(cssnano())
 				.pipe(rename({suffix:'.min'}))
-				.pipe(gulp.dest('app/css'));
+				.pipe(gulp.dest('app/css'))
+				.pipe(browserSync.reload({stream:true}));
 });
 gulp.task('watch', ['sass', 'js', 'browser-sync'], function() {
-	gulp.watch('app/scss/**/*.scss', ['sass']);
+	gulp.watch('app/scss/**/*.scss', ['css-libs']);
 	gulp.watch(['app/script/**/*.js', 'app/script/common.min.js'], ['js']);
 	//gulp.watch('500303_GULP/*.php', browserSync.reload);
 	gulp.watch('app/**/*.php').on('change', browserSync.reload);
