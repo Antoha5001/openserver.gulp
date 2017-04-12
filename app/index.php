@@ -20,7 +20,14 @@
 
 </head>
 <body>
-	<p>Lorem ipsum dolor sit amet.</p>
+  <div class="wrapper">
+    <div class="row">
+      <div class="col col-lg-2">
+    	<p>Lorem ipsum dolor sit amet.</p></div>
+      <div class="col col-lg-6">
+    	<p>Lorem ipsum dochfghlor sit amet.</p></div>
+    </div>
+  </div>
 <script type="text/javascript" src="script/scripts.min.js"></script>
 <!-- <script>window.jQuery || document.write('<script src="script/jquery.js"><\/script>')</script> -->
 </body>

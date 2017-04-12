@@ -13,6 +13,7 @@ var gulp           = require('gulp'),
 		autoprefixer   = require('gulp-autoprefixer'),
 		ftp            = require('vinyl-ftp'),
 		notify         = require("gulp-notify"),
+		gcmq         = require("gulp-group-css-media-queries"),
 		srv 						= 'openserver.gulp:82';
 
 // Скрипты проекта
@@ -39,7 +40,7 @@ gulp.task('js', ['common-js'], function() {
 	.pipe(browserSync.reload({stream: true}));
 });
 
-gulp.task('browser-sync',['js','sass'], function() {
+gulp.task('browser-sync',['js','css-libs'], function() {
 	browserSync.init({
 		/*server: {
 			baseDir: '500303_GULP'
@@ -63,6 +64,7 @@ gulp.task('browser-sync',['js','sass'], function() {
 gulp.task('sass', function () {
 	return gulp.src('app/scss/*.scss') //берем какие-нибудь файлы, и возвращаем
 				.pipe(sass()) // вызов како-то команды, плагина,
+				.pipe(gcmq()) // Группируем media запросы
 				.pipe(autoprefixer(['last 15 versions','> 1%','ie 8','ie 7'],{cascade:true}))
 				.pipe(gulp.dest('app/css')) //выгружаем работу плагина
 				.pipe(browserSync.reload({stream:true})); //инжектим css
@@ -74,7 +76,7 @@ gulp.task('css-libs',['sass'], function(){
 				.pipe(gulp.dest('app/css'))
 				.pipe(browserSync.reload({stream:true}));
 });
-gulp.task('watch', ['sass', 'js', 'browser-sync'], function() {
+gulp.task('watch', ['css-libs', 'js', 'browser-sync'], function() {
 	gulp.watch('app/scss/**/*.scss', ['css-libs']);
 	gulp.watch(['app/script/**/*.js', 'app/script/common.min.js'], ['js']);
 	//gulp.watch('500303_GULP/*.php', browserSync.reload);

@@ -1,5 +1,6 @@
 @import "_library";
 @import "_reset";
+@import "_setka";
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700&subset=cyrillic);
 @font-face {
 	font-family: nautilys;
@@ -8,8 +9,8 @@
 	font-style: normal;
 }
 p{
-	color: red;
+	//color: red;
 }
 body{
-	background: green;
+	//background: green;
 }
