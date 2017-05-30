@@ -81,6 +81,7 @@ gulp.task('watch', ['css-libs', 'js', 'browser-sync'], function() {
 	gulp.watch(['app/script/**/*.js', 'app/script/common.min.js'], ['js']);
 	//gulp.watch('500303_GULP/*.php', browserSync.reload);
 	gulp.watch('app/**/*.php').on('change', browserSync.reload);
+	gulp.watch('app/**/*.html').on('change', browserSync.reload);
 });
 
 gulp.task('imagemin', function() {
